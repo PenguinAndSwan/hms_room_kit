@@ -63,7 +63,10 @@ class PreviewHeader extends StatelessWidget {
                   ///with the company logo from dashboard
                   HMSRoomLayout.roleLayoutData?.logo?.url == null
                       ? Container()
-                      : HMSRoomLayout.roleLayoutData!.logo!.url!.contains("svg")
+                      : const SizedBox(
+                          height: 30,
+                          width: 30,
+                        ),/*HMSRoomLayout.roleLayoutData!.logo!.url!.contains("svg")
                           ? /*SvgPicture.network(
                               HMSRoomLayout.roleLayoutData!.logo!.url!,
                               height: 30,
@@ -84,14 +87,14 @@ class PreviewHeader extends StatelessWidget {
                               },
                               height: 30,
                               width: 30,
-                            ),
+                            )*/
                   const SizedBox(
                     height: 16,
                   ),
                   HMSTitleText(
-                      text: HMSRoomLayout.roleLayoutData?.screens?.preview
+                      text: "Active Call",/*HMSRoomLayout.roleLayoutData?.screens?.preview
                               ?.previewHeader?.title ??
-                          "Active Call",//"Get Started",
+                          "Get Started"*/
                       fontSize: 24,
                       lineHeight: 32,
                       textColor: HMSThemeColors.onSurfaceHighEmphasis),
