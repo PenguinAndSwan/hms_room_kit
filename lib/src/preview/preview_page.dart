@@ -46,42 +46,17 @@ class _PreviewPageState extends State<PreviewPage> {
   late TextEditingController nameController;
   bool isJoiningRoom = false;
   bool isHLSStarting = false;
-  final GlobalKey joinKey = GlobalKey();
 
   @override
   void initState() {
     super.initState();
     nameController = TextEditingController(text: widget.name);
-    SchedulerBinding.instance.addPostFrameCallback((_) {
-      Future.delayed(const Duration(milliseconds: 5000));
-      _startMeeting(context);
-    });
   }
 
   @override
   void dispose() {
     nameController.dispose();
     super.dispose();
-  }
-
-  void _startMeeting(context) async {
-    RenderBox renderbox = joinKey.currentContext!.findRenderObject() as RenderBox;
-    Offset position = renderbox.localToGlobal(Offset.zero);
-    double x = position.dx;
-    double y = position.dy;
-
-    print(x);
-    print(y);
-
-    GestureBinding.instance.handlePointerEvent(PointerDownEvent(
-      position: Offset(x, y),
-    ));
-
-    await Future.delayed(const Duration(milliseconds: 500));
-
-    GestureBinding.instance.handlePointerEvent(PointerUpEvent(
-      position: Offset(x, y),
-    ));
   }
 
   ///This function initializes the [MeetingStore] object
@@ -423,7 +398,6 @@ class _PreviewPageState extends State<PreviewPage> {
                                                         ),
                                                       ),
                                                       HMSListenableButton(
-                                                        key: joinKey,
                                                         isDisabled:
                                                             isHLSStarting,
                                                         textController:
