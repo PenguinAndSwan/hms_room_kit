@@ -4,6 +4,7 @@ import 'dart:io';
 ///Package imports
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:provider/provider.dart';
 import 'package:hmssdk_flutter/hmssdk_flutter.dart';
 
@@ -49,12 +50,20 @@ class _PreviewPageState extends State<PreviewPage> {
   void initState() {
     super.initState();
     nameController = TextEditingController(text: widget.name);
+    SchedulerBinding.instance.addPostFrameCallback((_) {
+      _startMeeting(context);
+    });
   }
 
   @override
   void dispose() {
     nameController.dispose();
     super.dispose();
+  }
+
+  void _startMeeting(context) {
+    final previewStore = context.watch<PreviewStore>();
+    _joinMeeting(previewStore);
   }
 
   ///This function initializes the [MeetingStore] object
