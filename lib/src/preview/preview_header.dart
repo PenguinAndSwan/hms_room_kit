@@ -51,8 +51,8 @@ class PreviewHeader extends StatelessWidget {
                   false)
               ? MediaQuery.of(context).size.height * 0.4
               : Platform.isIOS
-                  ? 50
-                  : 35),
+                  ? 30
+                  : 15),
         ),
         child: isHidden
             ? Container()
