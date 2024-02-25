@@ -49,6 +49,7 @@ class _PreviewPageState extends State<PreviewPage> {
   void initState() {
     super.initState();
     nameController = TextEditingController(text: widget.name);
+    _joinMeeting(context.watch<PreviewStore>());
   }
 
   @override
