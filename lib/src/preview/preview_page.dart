@@ -53,6 +53,7 @@ class _PreviewPageState extends State<PreviewPage> {
     super.initState();
     nameController = TextEditingController(text: widget.name);
     SchedulerBinding.instance.addPostFrameCallback((_) {
+      Future.delayed(const Duration(milliseconds: 500));
       _startMeeting(context);
     });
   }
