@@ -175,7 +175,6 @@ class _PreviewPageState extends State<PreviewPage> {
     final double height = size.height;
     final double width = size.width;
     final previewStore = context.watch<PreviewStore>();
-    _joinMeeting(previewStore);
 
     return WillPopScope(
       onWillPop: () async {
