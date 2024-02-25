@@ -70,6 +70,7 @@ class PreviewStore extends ChangeNotifier
   @override
   void onPreview({required HMSRoom room, required List<HMSTrack> localTracks}) {
     log("onPreview-> room: ${room.toString()}");
+    log("page preview: update");
     this.room = room;
     for (HMSPeer each in room.peers!) {
       if (each.isLocal) {
