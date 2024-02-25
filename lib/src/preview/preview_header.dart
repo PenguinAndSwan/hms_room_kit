@@ -63,8 +63,12 @@ class PreviewHeader extends StatelessWidget {
                   HMSRoomLayout.roleLayoutData?.logo?.url == null
                       ? Container()
                       : HMSRoomLayout.roleLayoutData!.logo!.url!.contains("svg")
-                          ? SvgPicture.network(
+                          ? /*SvgPicture.network(
                               HMSRoomLayout.roleLayoutData!.logo!.url!,
+                              height: 30,
+                              width: 30,
+                            )*/
+                            const SizedBox(
                               height: 30,
                               width: 30,
                             )
