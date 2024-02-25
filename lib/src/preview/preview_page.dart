@@ -49,7 +49,6 @@ class _PreviewPageState extends State<PreviewPage> {
   void initState() {
     super.initState();
     nameController = TextEditingController(text: widget.name);
-    _joinMeeting(context.watch<PreviewStore>());
   }
 
   @override
@@ -167,6 +166,7 @@ class _PreviewPageState extends State<PreviewPage> {
     final double height = size.height;
     final double width = size.width;
     final previewStore = context.watch<PreviewStore>();
+    _joinMeeting(previewStore);
 
     return WillPopScope(
       onWillPop: () async {
