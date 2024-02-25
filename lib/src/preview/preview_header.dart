@@ -115,6 +115,9 @@ class PreviewHeader extends StatelessWidget {
                   const SizedBox(
                     height: 16,
                   ),
+                  const SizedBox(
+                    height: 5,
+                  ),
                   PreviewParticipantChip(
                       previewStore: previewStore, width: width)
                 ],
