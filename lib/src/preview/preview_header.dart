@@ -100,6 +100,9 @@ class PreviewHeader extends StatelessWidget {
                   const SizedBox(
                     height: 4,
                   ),
+                  const SizedBox(
+                    height: 14,
+                  ),
                   HMSSubheadingText(
                       text: HMSRoomLayout.roleLayoutData?.screens?.preview
                               ?.previewHeader?.subTitle ??
