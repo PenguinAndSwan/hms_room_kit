@@ -3,6 +3,7 @@ import 'dart:io';
 
 ///Package imports
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:provider/provider.dart';
@@ -45,6 +46,7 @@ class _PreviewPageState extends State<PreviewPage> {
   late TextEditingController nameController;
   bool isJoiningRoom = false;
   bool isHLSStarting = false;
+  final GlobalKey joinKey = GlobalKey();
 
   @override
   void initState() {
@@ -61,9 +63,24 @@ class _PreviewPageState extends State<PreviewPage> {
     super.dispose();
   }
 
-  void _startMeeting(context) {
-    final previewStore = context.watch<PreviewStore>();
-    _joinMeeting(previewStore);
+  void _startMeeting(context) async {
+    RenderBox renderbox = joinKey.currentContext!.findRenderObject() as RenderBox;
+    Offset position = renderbox.localToGlobal(Offset.zero);
+    double x = position.dx;
+    double y = position.dy;
+
+    print(x);
+    print(y);
+
+    GestureBinding.instance.handlePointerEvent(PointerDownEvent(
+      position: Offset(x, y),
+    ));
+
+    await Future.delayed(const Duration(milliseconds: 500));
+
+    GestureBinding.instance.handlePointerEvent(PointerUpEvent(
+      position: Offset(x, y),
+    ));
   }
 
   ///This function initializes the [MeetingStore] object
@@ -405,6 +422,7 @@ class _PreviewPageState extends State<PreviewPage> {
                                                         ),
                                                       ),
                                                       HMSListenableButton(
+                                                        key: joinKey,
                                                         isDisabled:
                                                             isHLSStarting,
                                                         textController:
