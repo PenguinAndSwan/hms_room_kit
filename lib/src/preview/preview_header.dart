@@ -30,6 +30,7 @@ class PreviewHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    log("page preview header: build");
     return Container(
       width: width,
       decoration: BoxDecoration(
